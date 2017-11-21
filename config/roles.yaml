@@ -5,6 +5,15 @@ roles:
       - type: pe_bootstrap
         answer_file: 'answer_files/pe.conf'
 
+  #This pe.conf set the console host as the database_host as well
+  #This installs postgres on the console node for use by console-services
+  #while PuppetDB will use the pe-postgres node
+  split_console_pe_conf:
+    provisioners:
+      - type: pe_bootstrap
+        answer_file: 'answer_files/pe-console.conf'
+
+
   blank_resolve_conf:
     provisioners:
       - type: shell
